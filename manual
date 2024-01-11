@@ -1,0 +1,218 @@
+Feature: Contact Page
+  As a user
+  I want to be able to access the contact page
+  So that I can view the contact details
+@TEST-1
+  Scenario: access to contact page
+    Given I am in the innocv page
+    When I click on the contact button
+    Then  I should be redirected to the contact page
+    And I should see contact page details
+
+
+-----------------
+Feature: Submit Contact Form
+  As a user
+  I want to be able to submit the contact form
+  So that I can send my inquiry to the company
+@TEST-2
+  Scenario Outline: Submitting the contact form
+    Given I am in the contact page
+    When I fill out form with correct data
+    And I check "He leído y acepto los términos de uso y la política de privacidad."
+    And I click on "Enviar formulario" button
+    Then I should see a confirmation message that the form has been submitted successfully
+    And I check my email inbox for a received form notification
+
+
+-----------------
+Feature: Submit Contact Form (NEGATIVE)
+  As a user
+  I want to be able to submit the contact form
+  So that I can send my inquiry to the company
+@TEST-3
+  Scenario Outline: Submitting the contact form with incorrect data
+    Given I am in the contact page
+    When I fill out form with incorrect data
+    And I check "He leído y acepto los términos de uso y la política de privacidad."
+    And I click on "Enviar formulario" button
+    Then I should see an error message "El formulario no ha podido ser enviado" indicating that the form could not be submitted
+    And I should not see any received form notification in the inbox
+
+
+-----------------
+ Feature: Closing Cookies Message
+  As a user
+  I want to be able to close the cookies message
+  So that it disappears from the page
+@TEST-4
+  Scenario Outline: Closing the cookies message
+    Given I am in the contact page
+    And I see the cookies message
+    When click "<cookies>" button
+    Then I should wait for the cookies message to disappear from the page
+   Examples:
+      | cookies                   |
+      | permitir todas las cookies|
+      | close                     |
+
+
+-----------------
+Feature: Accessing News Pages
+  As a user
+  I want to be able to access the news pages
+  So that I can view the details of each news article
+@TEST 5
+  Scenario :Accessing news pages
+    Given I am in the contact page
+    When I click on the "news" link in the top menu
+    When I click on the "news" cards
+    Then I should wait for the corresponding news pages to load
+    And I should see the details of the news page 
+
+
+-----------------
+Feature: Accessing Footer Menu Pages
+  As a user
+  I want to be able to access the pages from the footer menu
+  So that I can navigate to different sections of the website
+  @TEST-6
+  Scenario Outline: Accessing footer menu pages
+    Given I am in the contact page
+    When I click on the "<footer>" button in the footer menu
+    Then I should wait for the corresponding pages to load
+    And I should see "<footer"> page details
+    Examples:
+      | footer                      |
+      | Qué hacemos                 |
+      | Desarrollo a medida         |
+      | Equipos dedicados           |
+      | Migraciones e integraciones |
+      | Optimización de procesos    |
+      | Soluciones Supply Chain     |
+      | Roadmap tecnológico         |
+
+
+-----------------
+Feature: Accessing Social Media Pages
+  As a user
+  I want to be able to access the social media pages from the footer menu
+  So that I can connect with the company on social platforms
+  @TEST-7
+  Scenario Outline: Accessing social media pages
+    Given I am in the contact page
+    When I click on "<social media>" button
+    Then I should wait for the corresponding pages to load
+    And I should see the details of the "<social media>" pages
+    Examples:
+      | social media|
+      | LinkedIn    |
+      | Youtube     |
+      | Facebook    |
+      |Twitter      |
+      | Mail        |
+
+
+PLAN DE PRUEBAS
+
+----------------
+Titulo: Acceso a la Página de Contacto
+Entorno: PRO
+Objetivo: Verificar que el usuario pueda acceder a la página de contacto.
+Pasos de Prueba:
+1. Abrir la página de innocv.
+2. Verificar que el botón de contacto sea visible en la página.
+3. Hacer clic en el botón de contacto.
+4. Esperar a que la página se cargue.
+5. Verificar que el usuario sea redirigido a la página de contacto.
+6. Verificar que los detalles de la página de contacto sean visibles en la página.
+Resultados Esperados:
+- El botón de contacto debe ser visible en la página de innocv.
+- Al hacer clic en el botón de contacto, el usuario debe ser redirigido a la página de contacto.
+- Los detalles de la página de contacto deben ser visibles en la página de contacto.
+
+
+----------------
+Titulo: Enviar el formulario
+Entorno: PRO
+Objetivo: Verificar que el formulario se pueda enviar correctamente con datos válidos.
+Pasos de Prueba:
+1. Acceder a la página de contacto.
+2. Rellenar el formulario con datos correctos.
+3. Marcar la casilla de verificación "He leído y acepto los términos de uso y la política de privacidad."
+4. Hacer clic en el botón "Enviar formulario".
+5. Esperar a que se muestre un mensaje de confirmación de que el formulario se ha enviado correctamente.
+Resultados Esperados:
+- Al enviar el formulario con datos correctos y marcar la casilla de verificación, se debe mostrar un mensaje de confirmación de que el formulario se ha enviado correctamente
+( y si es posible se verificaría que el formulario ha llegado correctamente)
+
+
+---------------------------
+Titulo: Intentar enviar el formulario con datos incorrectos
+Entorno: PRO
+Objetivo: Verificar que el formulario no se pueda enviar con datos incorrectos y se muestre un mensaje de error correspondiente.
+Pasos de Prueba:
+1. Acceder a la página de contacto.
+2. Rellenar el formulario con datos incorrectos.
+3. Marcar la casilla de verificación "He leído y acepto los términos de uso y la política de privacidad."
+4. Hacer clic en el botón "Enviar formulario".
+5. Esperar a que se muestre un mensaje de error indicando que el formulario no ha podido ser enviado.
+
+Resultados Esperados:
+- Al intentar enviar el formulario con datos incorrectos y marcar la casilla de verificación, se debe mostrar un mensaje de error indicando que el formulario no ha podido ser enviado.
+( y si es posible se verificaría que el formulario no se ha mandado)
+
+
+--------------------------
+Titulo: Mensaje de Cookies
+Entorno: PRO
+Objetivo: Verificar que el mensaje de cookies se pueda cerrar correctamente al hacer clic en el botón correspondiente.
+Pasos de Prueba:
+1. Acceder a la página de contacto.
+2. Verificar que se muestre el mensaje de cookies.
+3. Hacer clic en el botón "close" o "Permitir todas las cookies"
+4. Esperar a que el mensaje de cookies desaparezca.
+
+Resultados Esperados:
+- Al hacer clic en el botón correspondiente, se debe cerrar el mensaje de cookies y desaparecer de la página.
+
+
+----------------------------
+Titulo: Acceder a las noticias
+Entorno: PRO
+Objetivo: Verificar que los enlaces en el menú superior funcionen correctamente y redirijan a la página correspondiente.
+Pasos de Prueba:
+1. Acceder a la página de contacto.
+2. Hacer clic en las tarjetas "news" 
+3. Esperar a que se carguen las paginas correspondiente a "news".
+Resultados Esperados:
+- Al hacer clic en el enlace "news", se debe redirigir correctamente a la página correspondiente.
+- Se deben ver los detalles de la página "news".
+
+
+-----------------------------------
+Titulo: Acceder a enlaces en el Menú del Pie de Página
+Entorno: PRO
+Objetivo: Verificar que los enlaces en el menú del pie de página funcionen correctamente y redirijan a la página correspondiente.
+Pasos de Prueba:
+1. Acceder a la página de contacto.
+2. Hacer clic en los botones en el menú del pie de página.
+3. Esperar a que se carguen las paginas correspondiente correctamente
+
+Resultados Esperados:
+- Al hacer clic en los botones en el menú del pie de página, se debe redirigir correctamente a la página correspondiente.
+- Se deben ver los detalles de la página
+
+--------------------------------
+Titulo: 
+Entorno: PRO
+Objetivo: Verificar que los iconos de redes sociales en el menú del pie de página funcionen correctamente y se redirijan a la página correspondiente.
+
+Pasos de Prueba:
+1. Acceder a la página de contacto.
+2. Hacer clic en los iconos de la redes sociales en el menú del pie de página.
+3. Esperar a que se carguen las páginas correspondientes
+
+Resultados Esperados:
+- Al hacer clic en los iconos de la redes sociales en el menú del pie de página, se debe redirigir correctamente a la página correspondiente.
+- Se deben ver los detalles de las páginas.
